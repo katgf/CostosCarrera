@@ -9,6 +9,7 @@ import Carrera.Carrera;
 import Carrera.Periodo;
 import Eventos.Clase;
 import Eventos.Evento;
+import formularios.Carrerafm;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +23,8 @@ public class CostosCarrera {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Carrerafm fm = new Carrerafm();
+        fm.show();
         
         Carrera c = new Carrera();
         c.setNombre("Ing Financiera");
@@ -59,8 +62,16 @@ public class CostosCarrera {
         c.SaveFile();
         
         Carrera d = new Carrera();
-        d.SetFromFile("Ing Financiera");
-        System.out.println(d.CalcularCosto());
+        Carrera m = new Carrera();
+        if(d.SetFromFile("Ing Financieradd"))
+            System.out.println("load..");
+        
+        
+        if(m.SetFromFile("Ing Financiera"))
+            System.out.println("load");
+        
+        
+       // System.out.println(d.CalcularCosto());
     }
     
 }
