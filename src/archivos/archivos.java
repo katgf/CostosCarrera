@@ -57,9 +57,26 @@ public class archivos {
         br.close();
     
     }catch(Exception e){
-        e.printStackTrace();
+        System.out.println(e.getMessage());
+       
         
     }
         return lines;
+    }
+    
+    
+     public static Boolean Existe(String file) {
+    try {
+        File f1 = new File(file);
+        FileReader fr = new FileReader(f1);
+        BufferedReader br = new BufferedReader(fr);
+        fr.close();
+        br.close();
+        return true;
+    }catch(Exception e){
+        return false;
+        
+    }
+     
     }
 }
