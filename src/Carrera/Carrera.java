@@ -64,24 +64,27 @@ public class Carrera {
 
     }
     
-    public void SetFromFile(String Carrera){
+    public boolean SetFromFile(String Carrera){
         ArrayList<String> lineas = archivos.ReadFile(Carrera);
-        ArrayList<Periodo> LoadPeriod=new ArrayList<Periodo>();
-       String infoGeneral[] = lineas.get(0).split("-");
-        setNombre(infoGeneral[0]);
-        setAñoInicio(Integer.parseInt(infoGeneral[1].replace(";","")));
-        lineas.remove(0);
-        for (String linea : lineas) {
-            Periodo thisp = new Periodo();
-            int A= Integer.parseInt(linea.split("-")[0]);
-            int P=Integer.parseInt(linea.split("-")[1].replace(";",""));
-            thisp.setAño(A);
-            thisp.setPeriodo(P);
-            thisp.SetFromFile(thisp.NombrePeriodo());
-            LoadPeriod.add(thisp);
-        }
-        this.setPeriodos(LoadPeriod);
-        
+        if(!lineas.isEmpty()){
+            ArrayList<Periodo> LoadPeriod=new ArrayList<Periodo>();
+           String infoGeneral[] = lineas.get(0).split("-");
+            setNombre(infoGeneral[0]);
+            setAñoInicio(Integer.parseInt(infoGeneral[1].replace(";","")));
+            lineas.remove(0);
+            for (String linea : lineas) {
+                Periodo thisp = new Periodo();
+                int A= Integer.parseInt(linea.split("-")[0]);
+                int P=Integer.parseInt(linea.split("-")[1].replace(";",""));
+                thisp.setAño(A);
+                thisp.setPeriodo(P);
+                thisp.SetFromFile(thisp.NombrePeriodo());
+                LoadPeriod.add(thisp);
+            }
+            this.setPeriodos(LoadPeriod);
+            return true;
+        }  
+        return false;
     }
     
     
