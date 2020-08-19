@@ -32,6 +32,11 @@ public class Carrera {
     public String getNombre() {
         return Nombre;
     }
+    
+    public void addPeriodo(Periodo periodo)
+    {
+        this.Periodos.add(periodo);
+    }
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
@@ -63,6 +68,7 @@ public class Carrera {
         }
 
     }
+    
     
     public boolean SetFromFile(String Carrera){
         ArrayList<String> lineas = archivos.ReadFile(Carrera);

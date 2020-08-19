@@ -25,7 +25,7 @@ public class CostosCarrera {
         // TODO code application logic here
         Carrerafm fm = new Carrerafm();
         fm.show();
-        
+       /* 
         Carrera c = new Carrera();
         c.setNombre("Ing Financiera");
         c.setAñoInicio(2007);
@@ -70,7 +70,7 @@ public class CostosCarrera {
         if(m.SetFromFile("Ing Financiera"))
             System.out.println("load");
         
-        
+        */
        // System.out.println(d.CalcularCosto());
     }
     
