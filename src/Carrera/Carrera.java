@@ -19,6 +19,7 @@ public class Carrera {
     private int añoInicio;
 
     public Carrera() {
+        Periodos = new ArrayList<>();
     }
 
     public ArrayList<Periodo> getPeriodos() {

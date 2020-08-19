@@ -31,7 +31,14 @@ public class Periodo {
     public void setEvs(ArrayList<Evento> Evs) {
         this.Evs = Evs;
     }
-
+    
+    public void addEvs(Evento evs){
+        String tp=evs.getTipo();
+        int pos = getEvs().size()+1;
+        evs.setCodigo(tp+"-"+pos);
+        this.Evs.add(evs);
+    }
+    
     public int getAño() {
         return año;
     }

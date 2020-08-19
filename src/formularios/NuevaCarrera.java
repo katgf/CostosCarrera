@@ -8,6 +8,9 @@ package formularios;
 import Carrera.Carrera;
 import archivos.archivos;
 import archivos.properties;
+import java.awt.Toolkit;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -118,8 +121,20 @@ Carrera carrera;
             carrera.setNombre(Nombre);
             carrera.setAñoInicio(año);
             carrera.SaveFile();
+            
+            txtCarrera.setText("");
+            txtaño.setText("");
+            setWarningMsg("Carrera Creada");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+        public static void setWarningMsg(String text){
+        Toolkit.getDefaultToolkit().beep();
+        JOptionPane optionPane = new JOptionPane(text,JOptionPane.OK_OPTION);
+        JDialog dialog = optionPane.createDialog("OK!");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+}
     /**
      * @param args the command line arguments
      */
