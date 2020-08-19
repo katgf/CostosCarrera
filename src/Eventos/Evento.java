@@ -43,4 +43,5 @@ public abstract class Evento {
     
     public abstract String TextToFile();
     public abstract void SetFromFile(String datos);
+    public abstract Object toobj();
 }
