@@ -56,5 +56,11 @@ public class Clase extends Evento{
         setCodigo(tokens.get(0));
         setTipo("Clase");
     }
+
+    @Override
+    public Object toobj() {
+        String datos[] = {"Nombre: "+getNombre(),"Catedratico:"+getCatedratico(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
+        return datos;
+    }
     
 }
