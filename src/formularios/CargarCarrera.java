@@ -6,9 +6,15 @@
 package formularios;
 
 import Carrera.Carrera;
+import Carrera.Periodo;
+import Eventos.Evento;
 import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
 
 /**
  *
@@ -21,6 +27,8 @@ public class CargarCarrera extends javax.swing.JFrame {
      */
     public CargarCarrera() {
         initComponents();
+        
+        jTree1.setModel(null);
     }
 
     /**
@@ -36,6 +44,8 @@ public class CargarCarrera extends javax.swing.JFrame {
         txtCarrera = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +60,8 @@ public class CargarCarrera extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Cargar Carrera");
+
+        jScrollPane1.setViewportView(jTree1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,20 +79,27 @@ public class CargarCarrera extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(66, 66, 66)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(66, 66, 66)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,15 +114,45 @@ public class CargarCarrera extends javax.swing.JFrame {
         }else{
             setWarningMsg("Carrera no existe");
         }
- 
+        
+        LoadTree(carrera);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void LoadTree(Carrera carrera){
+        DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(carrera.getNombre());
+        DefaultTreeModel model = new DefaultTreeModel(rootNode);
+        jTree1.setModel(model);
+
+        for (Periodo periodo : carrera.getPeriodos() ) {
+            DefaultMutableTreeNode PeriodoNode = new DefaultMutableTreeNode(periodo.NombrePeriodo());    
+            for (Evento ev : periodo.getEvs()) {
+                PeriodoNode.add(evsNode(ev));
+            }
+             rootNode.add(PeriodoNode);
+        }
+       
+       // rootNode.add(new DefaultMutableTreeNode(carrera.getPeriodos().get(0).NombrePeriodo()));
+
+
+        model.reload();
+    }
+    public DefaultMutableTreeNode evsNode(Evento ev){
+        DefaultMutableTreeNode evNode = new DefaultMutableTreeNode(ev.getTipo()); 
+        for (String object : (String[])ev.toobj()) {
+            evNode.add(new DefaultMutableTreeNode(object));
+        }
+        
+        return evNode;
+    }
+    
+    
     public static void setWarningMsg(String text){
-    Toolkit.getDefaultToolkit().beep();
-    JOptionPane optionPane = new JOptionPane(text,JOptionPane.WARNING_MESSAGE);
-    JDialog dialog = optionPane.createDialog("Warning!");
-    dialog.setAlwaysOnTop(true);
-    dialog.setVisible(true);
+        Toolkit.getDefaultToolkit().beep();
+        JOptionPane optionPane = new JOptionPane(text,JOptionPane.WARNING_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Warning!");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
 }
     /**
      * @param args the command line arguments
@@ -144,6 +193,8 @@ public class CargarCarrera extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     private javax.swing.JTextField txtCarrera;
     // End of variables declaration//GEN-END:variables
 }
