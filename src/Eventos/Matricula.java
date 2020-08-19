@@ -46,4 +46,10 @@ public class Matricula extends Evento{
         setTipo("Matricula");
     }
 
+        @Override
+    public Object toobj() {
+        String datos[] = {"Nombre: "+getFecha(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
+        return datos;
+    }
+    
 }
