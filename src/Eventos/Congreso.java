@@ -70,14 +70,14 @@ public class Congreso extends Evento{
         }
         setNombre(tokens.get(1));
         setConferencistasText(tokens.get(2));
-        setPrecio(Integer.parseInt(tokens.get(3)));
+        setPrecio(Double.parseDouble(tokens.get(3)));
         setCodigo(tokens.get(0));
-        setTipo("Clase");
+        setTipo("Congreso");
     }
     
         @Override
     public Object toobj() {
-        String datos[] = {"Nombre: "+getNombre(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
+        String datos[] = {"Nombre: "+getNombre(),"Tipo: "+getTipo(),"Precio: "+getPrecio(), "Conferencistas: "+getConferencistasText()};
         return datos;
     }
     

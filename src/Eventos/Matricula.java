@@ -41,14 +41,14 @@ public class Matricula extends Evento{
                 tokens.add(token);
         }
         setFecha(tokens.get(1));
-        setPrecio(Integer.parseInt(tokens.get(2)));
+        setPrecio(Double.parseDouble(tokens.get(2)));
         setCodigo(tokens.get(0));
         setTipo("Matricula");
     }
 
         @Override
     public Object toobj() {
-        String datos[] = {"Nombre: "+getFecha(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
+        String datos[] = {"Fecha: "+getFecha(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
         return datos;
     }
     

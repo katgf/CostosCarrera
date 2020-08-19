@@ -7,6 +7,11 @@ package formularios;
 
 import Carrera.Carrera;
 import Carrera.Periodo;
+import Eventos.Clase;
+import Eventos.Congreso;
+import Eventos.Matricula;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 import javax.swing.ComboBoxModel;
 
 /**
@@ -55,24 +60,24 @@ public class AgregarEvento extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtCostoM = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         cboPeriodoM = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jTextField10 = new javax.swing.JTextField();
+        txtNombreN = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txtCostoN = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         cboPeriodoN = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtConferencistas = new javax.swing.JTextPane();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,6 +93,11 @@ public class AgregarEvento extends javax.swing.JFrame {
         jLabel11.setText("Costo");
 
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Periodo");
 
@@ -149,6 +159,11 @@ public class AgregarEvento extends javax.swing.JFrame {
         jLabel13.setText("Costo");
 
         jButton2.setText("OK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Periodo");
 
@@ -171,8 +186,8 @@ public class AgregarEvento extends javax.swing.JFrame {
                             .addComponent(jLabel13))
                         .addGap(44, 44, 44)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtCostoM, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jButton2)))
@@ -190,9 +205,9 @@ public class AgregarEvento extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCostoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel13))
                 .addGap(78, 78, 78)
                 .addComponent(jButton2)
@@ -221,12 +236,17 @@ public class AgregarEvento extends javax.swing.JFrame {
         jLabel17.setText("Costo");
 
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel18.setText("Periodo");
 
         jLabel19.setText("Nombre del Congreso");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtConferencistas);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -246,8 +266,8 @@ public class AgregarEvento extends javax.swing.JFrame {
                             .addComponent(jLabel17))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCostoN, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreN, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
@@ -266,7 +286,7 @@ public class AgregarEvento extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel19)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
@@ -275,7 +295,7 @@ public class AgregarEvento extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(33, 33, 33)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCostoN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel17))
                 .addGap(45, 45, 45)
                 .addComponent(jButton3)
@@ -323,6 +343,76 @@ public class AgregarEvento extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         Clase cl = new Clase();
+        cl.setNombre(txtNombreClase.getText());
+        cl.setCatedratico(txtCatedratico.getText());
+        cl.setPrecio(Double.parseDouble(txtPrecioC.getText()));
+        cl.setTipo("cl");
+        int idx= GetPeriodoByName((String)cboPeriodoC.getSelectedItem());
+        carrera.getPeriodos().get(idx).addEvs(cl);
+        carrera.SaveFile();
+        txtCatedratico.setText("");
+        txtNombreClase.setText("");
+        txtPrecioC.setText("");
+        cboPeriodoC.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Matricula cl = new Matricula();
+        cl.setFecha(txtFecha.getText());
+        cl.setPrecio(Double.parseDouble(txtCostoM.getText()));
+        cl.setTipo("mt");
+        int idx= GetPeriodoByName((String)cboPeriodoC.getSelectedItem());
+        carrera.getPeriodos().get(idx).addEvs(cl);
+        carrera.SaveFile();
+        txtFecha.setText("");
+        txtCostoM.setText("");
+        cboPeriodoC.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Congreso cl = new Congreso();
+        cl.setNombre(txtNombreN.getText());
+        cl.setConferencistas(ConferencistasfromText(txtConferencistas.getText()));
+        //cl.setCatedratico(txtCatedratico.getText());
+        cl.setPrecio(Double.parseDouble(txtCostoN.getText()));
+        cl.setTipo("cn");
+        
+        int idx= GetPeriodoByName((String)cboPeriodoC.getSelectedItem());
+        carrera.getPeriodos().get(idx).addEvs(cl);
+        carrera.SaveFile();
+        txtCatedratico.setText("");
+        txtNombreClase.setText("");
+        txtPrecioC.setText("");
+        cboPeriodoC.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    
+     public ArrayList<String> ConferencistasfromText(String text)
+    {
+        ArrayList <String> tokens = new ArrayList<>();
+        for (StringTokenizer stringTokenizer = new StringTokenizer(text,","); stringTokenizer.hasMoreTokens();) {
+            String token = stringTokenizer.nextToken();
+                tokens.add(token);
+        }
+            return tokens;
+    }
+    
+    public int GetPeriodoByName(String periodo){
+        for (Periodo periodo1 : carrera.getPeriodos()) {
+            if(periodo1.NombrePeriodo().equals(periodo)){
+                return carrera.getPeriodos().indexOf(periodo1);
+            }
+        }
+        return -1;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -383,13 +473,13 @@ public class AgregarEvento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField txtCatedratico;
+    private javax.swing.JTextPane txtConferencistas;
+    private javax.swing.JTextField txtCostoM;
+    private javax.swing.JTextField txtCostoN;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombreClase;
+    private javax.swing.JTextField txtNombreN;
     private javax.swing.JTextField txtPrecioC;
     // End of variables declaration//GEN-END:variables
 }
