@@ -75,6 +75,12 @@ public class Congreso extends Evento{
         setTipo("Clase");
     }
     
+        @Override
+    public Object toobj() {
+        String datos[] = {"Nombre: "+getNombre(),"Tipo:"+getTipo(),"Precio:"+getPrecio()};
+        return datos;
+    }
+    
  
     
 }
