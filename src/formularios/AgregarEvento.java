@@ -366,7 +366,7 @@ public class AgregarEvento extends javax.swing.JFrame {
         cl.setFecha(txtFecha.getText());
         cl.setPrecio(Double.parseDouble(txtCostoM.getText()));
         cl.setTipo("mt");
-        int idx= GetPeriodoByName((String)cboPeriodoC.getSelectedItem());
+        int idx= GetPeriodoByName((String)cboPeriodoM.getSelectedItem());
         carrera.getPeriodos().get(idx).addEvs(cl);
         carrera.SaveFile();
         txtFecha.setText("");
@@ -384,7 +384,7 @@ public class AgregarEvento extends javax.swing.JFrame {
         cl.setPrecio(Double.parseDouble(txtCostoN.getText()));
         cl.setTipo("cn");
         
-        int idx= GetPeriodoByName((String)cboPeriodoC.getSelectedItem());
+        int idx= GetPeriodoByName((String)cboPeriodoN.getSelectedItem());
         carrera.getPeriodos().get(idx).addEvs(cl);
         carrera.SaveFile();
         txtCatedratico.setText("");

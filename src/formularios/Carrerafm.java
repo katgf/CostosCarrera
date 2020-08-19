@@ -89,7 +89,7 @@ public class Carrerafm extends javax.swing.JFrame {
         // TODO add your handling code here:
         NuevaCarrera NC = new NuevaCarrera();
         NC.setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
